@@ -32,8 +32,8 @@
       "@controllers/*": [
         "./src/api/controllers/*"
       ],
-      "@entity/*": [
-        "./src/api/entity/*"
+      "@entities/*": [
+        "./src/api/entities/*"
       ],
       "@repositories/*": [
         "./src/api/repositories/*"
@@ -53,6 +53,6 @@
       "@utils/*": [
         "./src/api/utils/*"
       ]
-    },
+    }
   }
 }

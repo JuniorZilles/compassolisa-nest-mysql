@@ -19,7 +19,7 @@ module.exports = {
           '@dto': './src/api/dto',
           '@repositories': './src/api/repositories',
           '@services': './src/api/services',
-          '@entity': './src/api/entity',
+          '@entities': './src/api/entities',
           '@validations': './src/api/validations',
           '@middlewares': './src/api/middlewares',
           '@utils': './src/api/utils',
