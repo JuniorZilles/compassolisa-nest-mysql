@@ -1,4 +1,8 @@
 {
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ],
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -16,6 +20,39 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
+    "paths": {
+      "@modules/*": [
+        "./src/api/modules/*"
+      ],
+      "@controllers/*": [
+        "./src/api/controllers/*"
+      ],
+      "@entity/*": [
+        "./src/api/entity/*"
+      ],
+      "@repositories/*": [
+        "./src/api/repositories/*"
+      ],
+      "@services/*": [
+        "./src/api/services/*"
+      ],
+      "@validations/*": [
+        "./src/api/validations/*"
+      ],
+      "@middlewares/*": [
+        "./src/api/middlewares/*"
+      ],
+      "@dto/*": [
+        "./src/api/dto/*"
+      ],
+      "@utils/*": [
+        "./src/api/utils/*"
+      ]
+    },
   }
 }
