@@ -3,7 +3,7 @@ import FleetService from '@services/rental/rental.fleet/fleet.service';
 import CreateFleetDto from '@dto/rental/rental.fleet/create-fleet.dto';
 import UpdateFleetDto from '@dto/rental/rental.fleet/update-fleet.dto';
 
-@Controller('rental/:id/fleet')
+@Controller({path:'/rental/:id/fleet', version:'1'})
 export default class FleetController {
   constructor(private readonly fleetService: FleetService) {}
 
