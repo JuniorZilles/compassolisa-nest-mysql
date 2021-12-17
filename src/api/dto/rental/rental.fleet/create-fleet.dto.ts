@@ -1,1 +1,1 @@
-export class CreateFleetDto {}
+export default class CreateFleetDto {}

@@ -1,1 +1,1 @@
-export class Rental {}
+export default class Rental {}

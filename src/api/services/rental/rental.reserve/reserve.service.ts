@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateReserveDto } from '@dto/rental/rental.reserve/create-reserve.dto';
-import { UpdateReserveDto } from '@dto/rental/rental.reserve/update-reserve.dto';
+import CreateReserveDto from '@dto/rental/rental.reserve/create-reserve.dto';
+import UpdateReserveDto from '@dto/rental/rental.reserve/update-reserve.dto';
 
 @Injectable()
-export class ReserveService {
+export default class ReserveService {
   create(createReserveDto: CreateReserveDto) {
     return 'This action adds a new reserve';
   }

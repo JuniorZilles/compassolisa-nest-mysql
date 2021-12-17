@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFleetDto } from '@dto/rental/rental.fleet/create-fleet.dto';
-import { UpdateFleetDto } from '@dto/rental/rental.fleet/update-fleet.dto';
+import CreateFleetDto from '@dto/rental/rental.fleet/create-fleet.dto';
+import UpdateFleetDto from '@dto/rental/rental.fleet/update-fleet.dto';
 
 @Injectable()
-export class FleetService {
+export default class FleetService {
   create(createFleetDto: CreateFleetDto) {
     return 'This action adds a new fleet';
   }

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePersonDto } from '@dto/people/create-person.dto';
-import { UpdatePersonDto } from '@dto/people/update-person.dto';
+import CreatePersonDto from '@dto/people/create-person.dto';
+import UpdatePersonDto from '@dto/people/update-person.dto';
 
 @Injectable()
-export class PeopleService {
+export default class PeopleService {
   create(createPersonDto: CreatePersonDto) {
     return 'This action adds a new person';
   }

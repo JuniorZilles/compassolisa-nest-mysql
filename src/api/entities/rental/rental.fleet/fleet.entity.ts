@@ -1,1 +1,1 @@
-export class Fleet {}
+export default class Fleet {}

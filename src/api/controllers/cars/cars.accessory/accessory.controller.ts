@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { AccessoryService } from '@services/cars/cars.accessory/accessory.service';
-import { CreateAccessoryDto } from '@dto/cars/cars.accessory/create-accessory.dto';
-import { UpdateAccessoryDto } from '@dto/cars/cars.accessory/update-accessory.dto';
+import AccessoryService from '@services/cars/cars.accessory/accessory.service';
+import CreateAccessoryDto from '@dto/cars/cars.accessory/create-accessory.dto';
+import UpdateAccessoryDto from '@dto/cars/cars.accessory/update-accessory.dto';
 
 @Controller('cars/:id/accessory')
-export class AccessoryController {
+export default class AccessoryController {
   constructor(private readonly accessoryService: AccessoryService) {}
 
   @Post()

@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { FleetService } from '@services/rental/rental.fleet/fleet.service';
-import { CreateFleetDto } from '@dto/rental/rental.fleet/create-fleet.dto';
-import { UpdateFleetDto } from '@dto/rental/rental.fleet/update-fleet.dto';
+import FleetService from '@services/rental/rental.fleet/fleet.service';
+import CreateFleetDto from '@dto/rental/rental.fleet/create-fleet.dto';
+import UpdateFleetDto from '@dto/rental/rental.fleet/update-fleet.dto';
 
 @Controller('rental/:id/fleet')
-export class FleetController {
+export default class FleetController {
   constructor(private readonly fleetService: FleetService) {}
 
   @Post()

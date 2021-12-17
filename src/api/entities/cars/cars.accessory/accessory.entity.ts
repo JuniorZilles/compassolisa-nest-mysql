@@ -1,1 +1,1 @@
-export class Accessory {}
+export default class Accessory {}

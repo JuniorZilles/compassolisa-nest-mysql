@@ -1,1 +1,1 @@
-export class CreateAccessoryDto {}
+export default class CreateAccessoryDto {}

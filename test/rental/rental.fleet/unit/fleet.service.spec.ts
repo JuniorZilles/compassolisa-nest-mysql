@@ -8,7 +8,7 @@ describe('scr :: api :: service :: rental :: rental.fleet :: FleetService()', ()
 
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-          providers: [FleetService],
+          providers: [FleetService]
         }).compile();
 
         service = module.get<FleetService>(FleetService);

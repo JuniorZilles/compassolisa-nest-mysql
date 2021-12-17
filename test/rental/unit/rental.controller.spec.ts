@@ -10,7 +10,7 @@ describe('scr :: api :: controllers :: rental :: RentalController()', () => {
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
           controllers: [RentalController],
-          providers: [RentalService],
+          providers: [RentalService]
         }).compile();
 
         controller = module.get<RentalController>(RentalController);

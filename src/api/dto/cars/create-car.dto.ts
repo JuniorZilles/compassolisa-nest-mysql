@@ -1,1 +1,1 @@
-export class CreateCarDto {}
+export default class CreateCarDto {}

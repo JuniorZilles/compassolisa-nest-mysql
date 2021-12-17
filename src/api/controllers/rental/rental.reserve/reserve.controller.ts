@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { ReserveService } from '@services/rental/rental.reserve/reserve.service';
-import { CreateReserveDto } from '@dto/rental/rental.reserve/create-reserve.dto';
-import { UpdateReserveDto } from '@dto/rental/rental.reserve/update-reserve.dto';
+import ReserveService from '@services/rental/rental.reserve/reserve.service';
+import CreateReserveDto from '@dto/rental/rental.reserve/create-reserve.dto';
+import UpdateReserveDto from '@dto/rental/rental.reserve/update-reserve.dto';
 
 @Controller('rental/:id/reserve')
-export class ReserveController {
+export default class ReserveController {
   constructor(private readonly reserveService: ReserveService) {}
 
   @Post()

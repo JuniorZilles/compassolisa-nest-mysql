@@ -8,7 +8,7 @@ describe('scr :: api :: service :: people :: ReserveService()', () => {
 
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-          providers: [ReserveService],
+          providers: [ReserveService]
         }).compile();
 
         service = module.get<ReserveService>(ReserveService);

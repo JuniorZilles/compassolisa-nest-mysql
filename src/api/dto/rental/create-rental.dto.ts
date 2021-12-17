@@ -1,1 +1,1 @@
-export class CreateRentalDto {}
+export default class CreateRentalDto {}

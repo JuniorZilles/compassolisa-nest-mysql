@@ -1,14 +1,7 @@
-
-
-
-global.beforeAll(async () => {
-  
-});
+global.beforeAll(async () => {});
 
 global.afterEach(async () => {
-  //await cleanDatabase();
+  // await cleanDatabase();
 });
 
-global.afterAll(async () => {
-  
-});
+global.afterAll(async () => {});

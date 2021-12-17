@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { RentalService } from '@services/rental/rental.service';
-import { CreateRentalDto } from '@dto/rental/create-rental.dto';
-import { UpdateRentalDto } from '@dto/rental/update-rental.dto';
+import RentalService from '@services/rental/rental.service';
+import CreateRentalDto from '@dto/rental/create-rental.dto';
+import UpdateRentalDto from '@dto/rental/update-rental.dto';
 
 @Controller('rental')
-export class RentalController {
+export default class RentalController {
   constructor(private readonly rentalService: RentalService) {}
 
   @Post()

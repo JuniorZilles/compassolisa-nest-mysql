@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { PeopleService } from '@services/people/people.service';
-import { CreatePersonDto } from '@dto/people/create-person.dto';
-import { UpdatePersonDto } from '@dto/people/update-person.dto';
+import PeopleService from '@services/people/people.service';
+import CreatePersonDto from '@dto/people/create-person.dto';
+import UpdatePersonDto from '@dto/people/update-person.dto';
 
 @Controller('people')
-export class PeopleController {
+export default class PeopleController {
   constructor(private readonly peopleService: PeopleService) {}
 
   @Post()

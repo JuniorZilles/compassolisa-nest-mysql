@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CarsController } from '@controllers/cars/cars.controller';
 import { CarsService } from '@services/cars/cars.service';
 
-
 describe('scr :: api :: controllers :: cars :: CarsController()', () => {
   describe('GIVEN a context that CarsModule is not instantiated', () => {
     describe('WHEN the CarsModule is instantiated', () => {
@@ -11,7 +10,7 @@ describe('scr :: api :: controllers :: cars :: CarsController()', () => {
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
           controllers: [CarsController],
-          providers: [CarsService],
+          providers: [CarsService]
         }).compile();
 
         controller = module.get<CarsController>(CarsController);

@@ -10,7 +10,7 @@ describe('scr :: api :: controllers :: cars :: cars.accessory :: AccessoryContro
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
           controllers: [AccessoryController],
-          providers: [AccessoryService],
+          providers: [AccessoryService]
         }).compile();
 
         controller = module.get<AccessoryController>(AccessoryController);

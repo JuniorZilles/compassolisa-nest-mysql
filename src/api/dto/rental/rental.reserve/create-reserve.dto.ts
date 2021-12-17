@@ -1,1 +1,1 @@
-export class CreateReserveDto {}
+export default class CreateReserveDto {}

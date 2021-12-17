@@ -10,7 +10,7 @@ describe('scr :: api :: controllers :: rental :: rental.reserve :: ReserveContro
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
           controllers: [ReserveController],
-          providers: [ReserveService],
+          providers: [ReserveService]
         }).compile();
 
         controller = module.get<ReserveController>(ReserveController);

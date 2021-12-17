@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Param, Delete, ParseIntPipe, Put } from '@nestjs/common';
-import { CarsService } from '@services/cars/cars.service';
-import { CreateCarDto } from '@dto/cars/create-car.dto';
-import { UpdateCarDto } from '@dto/cars/update-car.dto';
+import CarsService from '@services/cars/cars.service';
+import CreateCarDto from '@dto/cars/create-car.dto';
+import UpdateCarDto from '@dto/cars/update-car.dto';
 
 @Controller('cars')
-export class CarsController {
+export default class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Post()

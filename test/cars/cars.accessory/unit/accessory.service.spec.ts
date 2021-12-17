@@ -8,7 +8,7 @@ describe('scr :: api :: service :: cars :: cars.accessory :: AccessoryService()'
 
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-          providers: [AccessoryService],
+          providers: [AccessoryService]
         }).compile();
 
         service = module.get<AccessoryService>(AccessoryService);
@@ -40,5 +40,3 @@ describe('scr :: api :: service :: cars :: cars.accessory :: AccessoryService()'
     });
   });
 });
-
-

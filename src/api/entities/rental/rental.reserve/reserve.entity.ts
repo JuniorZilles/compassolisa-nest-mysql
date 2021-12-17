@@ -1,1 +1,1 @@
-export class Reserve {}
+export default class Reserve {}

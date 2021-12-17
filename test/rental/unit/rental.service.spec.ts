@@ -8,7 +8,7 @@ describe('scr :: api :: service :: people :: RentalService()', () => {
 
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-          providers: [RentalService],
+          providers: [RentalService]
         }).compile();
 
         service = module.get<RentalService>(RentalService);
@@ -40,4 +40,3 @@ describe('scr :: api :: service :: people :: RentalService()', () => {
     });
   });
 });
-
