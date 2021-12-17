@@ -1,58 +1,15 @@
 {
-  "include": [
-    "src/**/*",
-    "test/**/*"
-  ],
-  "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/@types"
-    ],
-    "paths": {
-      "@modules/*": [
-        "./src/api/modules/*"
+   "compilerOptions": {
+      "lib": [
+         "es5",
+         "es6"
       ],
-      "@controllers/*": [
-        "./src/api/controllers/*"
-      ],
-      "@entities/*": [
-        "./src/api/entities/*"
-      ],
-      "@repositories/*": [
-        "./src/api/repositories/*"
-      ],
-      "@services/*": [
-        "./src/api/services/*"
-      ],
-      "@validations/*": [
-        "./src/api/validations/*"
-      ],
-      "@middlewares/*": [
-        "./src/api/middlewares/*"
-      ],
-      "@dto/*": [
-        "./src/api/dto/*"
-      ],
-      "@utils/*": [
-        "./src/api/utils/*"
-      ]
-    }
-  }
+      "target": "es5",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./build",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "sourceMap": true
+   }
 }

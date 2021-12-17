@@ -13,12 +13,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
             username: process.env.TYPEORM_USERNAME,
             password: process.env.TYPEORM_PASSWORD,
             database: process.env.TYPEORM_DATABASE,
-            entities: ['src/entities/**/*.entity.ts'],
+            entities: [],
             synchronize: true,
-            migrations: ['src/migration/*.ts'],
-            cli: {
-                migrationsDir: 'src/migration'
-            }
         })
     ]
 })
