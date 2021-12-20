@@ -42,6 +42,7 @@ module.exports = {
         allowForLoopAfterthoughts: true
       }
     ],
-    'no-underscore-dangle': 'off'
+    'no-underscore-dangle': 'off',
+    'import/no-extraneous-dependencies': 'off'
   }
 }
