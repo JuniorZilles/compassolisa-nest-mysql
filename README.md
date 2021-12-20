@@ -66,6 +66,12 @@ $ yarn typeorm migration:create -n migrationName
 
 # create a migration with defined folder
 $ yarn typeorm migration:create -n migrationName -d src/migration
+
+# executa o migration
+$ yarn typeorm migration:run
+
+# rollback do migration
+yarn typeorm migration:revert
 ```	
 
 ## Support
