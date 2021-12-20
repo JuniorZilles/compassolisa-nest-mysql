@@ -7,11 +7,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.setGlobalPrefix('api');
-  
+
   app.enableVersioning({
-    type: VersioningType.URI,
+    type: VersioningType.URI
   });
-  
+
   const config = new DocumentBuilder()
     .setTitle('Compassolisa API')
     .setDescription('API de gestão de locadoras da Compassolisa')
