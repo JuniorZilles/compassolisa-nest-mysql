@@ -3,7 +3,7 @@ import RentalService from '@services/rental/rental.service';
 import CreateRentalDto from '@dto/rental/create-rental.dto';
 import UpdateRentalDto from '@dto/rental/update-rental.dto';
 
-@Controller({path:'/rental', version:'1'})
+@Controller({ path: '/rental', version: '1' })
 export default class RentalController {
   constructor(private readonly rentalService: RentalService) {}
 

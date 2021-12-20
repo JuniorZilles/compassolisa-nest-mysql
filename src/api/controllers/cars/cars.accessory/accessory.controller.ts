@@ -3,7 +3,7 @@ import AccessoryService from '@services/cars/cars.accessory/accessory.service';
 import CreateAccessoryDto from '@dto/cars/cars.accessory/create-accessory.dto';
 import UpdateAccessoryDto from '@dto/cars/cars.accessory/update-accessory.dto';
 
-@Controller({path:'/cars/:id/accessory', version:'1'})
+@Controller({ path: '/cars/:id/accessory', version: '1' })
 export default class AccessoryController {
   constructor(private readonly accessoryService: AccessoryService) {}
 

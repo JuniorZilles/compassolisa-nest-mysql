@@ -3,7 +3,7 @@ import PeopleService from '@services/people/people.service';
 import CreatePersonDto from '@dto/people/create-person.dto';
 import UpdatePersonDto from '@dto/people/update-person.dto';
 
-@Controller({path:'/people', version:'1'})
+@Controller({ path: '/people', version: '1' })
 export default class PeopleController {
   constructor(private readonly peopleService: PeopleService) {}
 

@@ -3,7 +3,7 @@ import ReserveService from '@services/rental/rental.reserve/reserve.service';
 import CreateReserveDto from '@dto/rental/rental.reserve/create-reserve.dto';
 import UpdateReserveDto from '@dto/rental/rental.reserve/update-reserve.dto';
 
-@Controller({path:'/rental/:id/reserve', version:'1'})
+@Controller({ path: '/rental/:id/reserve', version: '1' })
 export default class ReserveController {
   constructor(private readonly reserveService: ReserveService) {}
 
