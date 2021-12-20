@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export default class Acessorios1639767296627 implements MigrationInterface {
+export default class Endereco1640020696445 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'accessories',
+        name: 'endereco',
         columns: [
           {
             name: 'id',
@@ -15,12 +15,47 @@ export default class Acessorios1639767296627 implements MigrationInterface {
             generationStrategy: 'increment'
           },
           {
-            name: 'descricao',
+            name: 'cep',
             type: 'varchar',
             isNullable: false
           },
           {
-            name: 'id_carro',
+            name: 'number',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
+            name: 'complemento',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
+            name: 'bairro',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
+            name: 'localidade',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
+            name: 'logradouro',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
+            name: 'uf',
+            type: 'varchar',
+            isNullable: false
+          },
+          {
+            name: 'isFilial',
+            type: 'boolean',
+            isNullable: false
+          },
+          {
+            name: 'id_rental',
             type: 'int',
             isNullable: false
           },
@@ -39,17 +74,17 @@ export default class Acessorios1639767296627 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      'accessories',
+      'endereco',
       new TableForeignKey({
-        columnNames: ['id_carro'],
+        columnNames: ['id_rental'],
         referencedColumnNames: ['id'],
-        referencedTableName: 'cars',
+        referencedTableName: 'rental',
         onDelete: 'CASCADE'
       })
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('accessories');
+    await queryRunner.dropTable('endereco');
   }
 }

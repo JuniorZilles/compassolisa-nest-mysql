@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class Cars1639766855988 implements MigrationInterface {
+export default class People1640020353952 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'cars',
+        name: 'people',
         columns: [
           {
             name: 'id',
@@ -15,24 +15,36 @@ export default class Cars1639766855988 implements MigrationInterface {
             generationStrategy: 'increment'
           },
           {
-            name: 'modelo',
+            name: 'nome',
             type: 'varchar',
             isNullable: false
           },
           {
-            name: 'cor',
+            name: 'cpf',
             type: 'varchar',
             isNullable: false
           },
           {
-            name: 'ano',
-            type: 'int',
+            name: 'data_nascimento',
+            type: 'date',
             isNullable: false
           },
           {
-            name: 'quantidadePassageiros',
-            type: 'int',
+            name: 'email',
+            type: 'varchar',
+            isNullable: false,
+            isUnique: true
+          },
+          {
+            name: 'senha',
+            type: 'varchar',
             isNullable: false
+          },
+          {
+            name: 'habilitado',
+            type: 'enum',
+            isNullable: false,
+            enum: ['sim', 'não']
           },
           {
             name: 'created_at',
@@ -50,6 +62,6 @@ export default class Cars1639766855988 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('cars');
+    await queryRunner.dropTable('people');
   }
 }

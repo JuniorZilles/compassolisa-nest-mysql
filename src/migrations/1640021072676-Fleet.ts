@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export default class Acessorios1639767296627 implements MigrationInterface {
+export default class Fleet1640021072676 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'accessories',
+        name: 'fleet',
         columns: [
           {
             name: 'id',
@@ -15,12 +15,28 @@ export default class Acessorios1639767296627 implements MigrationInterface {
             generationStrategy: 'increment'
           },
           {
-            name: 'descricao',
+            name: 'status',
+            type: 'enum',
+            enum: ['disponível', 'indisponível'],
+            isNullable: false
+          },
+          {
+            name: 'placa',
             type: 'varchar',
             isNullable: false
           },
           {
-            name: 'id_carro',
+            name: 'valor_diaria',
+            type: 'decimal',
+            isNullable: false
+          },
+          {
+            name: 'id_rental',
+            type: 'int',
+            isNullable: false
+          },
+          {
+            name: 'id_car',
             type: 'int',
             isNullable: false
           },
@@ -39,9 +55,19 @@ export default class Acessorios1639767296627 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      'accessories',
+      'fleet',
       new TableForeignKey({
-        columnNames: ['id_carro'],
+        columnNames: ['id_rental'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'rental',
+        onDelete: 'CASCADE'
+      })
+    );
+
+    await queryRunner.createForeignKey(
+      'fleet',
+      new TableForeignKey({
+        columnNames: ['id_car'],
         referencedColumnNames: ['id'],
         referencedTableName: 'cars',
         onDelete: 'CASCADE'
@@ -50,6 +76,6 @@ export default class Acessorios1639767296627 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('accessories');
+    await queryRunner.dropTable('fleet');
   }
 }
