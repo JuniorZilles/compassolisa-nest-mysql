@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import CreateFleetDto from '@dto/rental/rental.fleet/create-fleet.dto';
-import UpdateFleetDto from '@dto/rental/rental.fleet/update-fleet.dto';
+import FleetDto from '@dto/rental/rental.fleet/fleet.dto';
+import SearchFleetDto from '@dto/rental/rental.fleet/search-fleet.dto';
 
 @Injectable()
 export default class FleetService {
-  create(createFleetDto: CreateFleetDto) {
+  create(id: string, createFleetDto: FleetDto) {
     return 'This action adds a new fleet';
   }
 
-  findAll() {
+  findAll(id: string, payload: SearchFleetDto) {
     return 'This action returns all fleet';
   }
 
-  findOne(id: number) {
+  findOne(id: string, fleetId: string) {
     return `This action returns a #${id} fleet`;
   }
 
-  update(id: number, updateFleetDto: UpdateFleetDto) {
+  update(id: string, fleetId: string, updateFleetDto: FleetDto) {
     return `This action updates a #${id} fleet`;
   }
 
-  remove(id: number) {
+  remove(id: string, fleetId: string) {
     return `This action removes a #${id} fleet`;
   }
 }

@@ -1,34 +1,56 @@
-import { Controller, Get, Post, Body, Param, Delete, ParseIntPipe, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, ParseUUIDPipe } from '@nestjs/common';
 import CarsService from '@services/cars/cars.service';
-import CreateCarDto from '@dto/cars/create-car.dto';
-import UpdateCarDto from '@dto/cars/update-car.dto';
+import CarDto from '@dto/cars/car.dto';
+import SearchCarDto from '@dto/cars/search-car.dto';
+import {
+  ApiBadRequestResponse,
+  ApiCreatedResponse,
+  ApiInternalServerErrorResponse,
+  ApiNoContentResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags
+} from '@nestjs/swagger';
+import ErrorDto from '@dto/error.dto';
+import ListCarDto from '@dto/cars/list-car.dto';
 
+@ApiTags('cars')
 @Controller({ path: '/cars', version: '1' })
+@ApiBadRequestResponse({ description: 'Bad Request.', type: ErrorDto, isArray: true })
+@ApiInternalServerErrorResponse({ description: 'Internal Server Error.', type: ErrorDto, isArray: true })
 export default class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Post()
-  create(@Body() createCarDto: CreateCarDto) {
+  @ApiCreatedResponse({ description: 'The car has been successfully created.', type: CarDto })
+  create(@Body() createCarDto: CarDto) {
     return this.carsService.create(createCarDto);
   }
 
   @Get()
-  findAll() {
-    return this.carsService.findAll();
+  @ApiOkResponse({ description: 'Operation succeeded.', type: ListCarDto })
+  findAll(@Param() payload: SearchCarDto) {
+    return this.carsService.findAll(payload);
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
+  @ApiOkResponse({ description: 'Operation succeeded.', type: CarDto })
+  @ApiNotFoundResponse({ description: 'The car was not found.', type: ErrorDto, isArray: true })
+  findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.carsService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() updateCarDto: UpdateCarDto) {
+  @ApiOkResponse({ description: 'Operation succeeded.', type: CarDto })
+  @ApiNotFoundResponse({ description: 'The car was not found.', type: ErrorDto, isArray: true })
+  update(@Param('id', ParseUUIDPipe) id: string, @Body() updateCarDto: CarDto) {
     return this.carsService.update(id, updateCarDto);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
+  @ApiNoContentResponse({ description: 'Car removed.' })
+  @ApiNotFoundResponse({ description: 'The car was not found.', type: ErrorDto, isArray: true })
+  remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.carsService.remove(id);
   }
 }

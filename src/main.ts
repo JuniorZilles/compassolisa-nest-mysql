@@ -16,6 +16,12 @@ async function bootstrap() {
     .setTitle('Compassolisa API')
     .setDescription('API de gestão de locadoras da Compassolisa')
     .setVersion('1.0')
+    .addTag('cars')
+    .addTag('car.accessories')
+    .addTag('people')
+    .addTag('rental')
+    .addTag('rental.fleet')
+    .addTag('rental.reserve')
     .build();
   const document = SwaggerModule.createDocument(app, config);
 

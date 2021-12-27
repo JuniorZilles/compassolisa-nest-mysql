@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import CreateRentalDto from '@dto/rental/create-rental.dto';
-import UpdateRentalDto from '@dto/rental/update-rental.dto';
+import RentalDto from '@dto/rental/rental.dto';
+import UpdateRentalDto from '@dto/rental/list-rental.dto';
+import SearchRentalDto from '@dto/rental/search-rental.dto';
 
 @Injectable()
 export default class RentalService {
-  create(createRentalDto: CreateRentalDto) {
+  create(createRentalDto: RentalDto) {
     return 'This action adds a new rental';
   }
 
-  findAll() {
+  findAll(payload: SearchRentalDto) {
     return `This action returns all rental`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} rental`;
   }
 
-  update(id: number, updateRentalDto: UpdateRentalDto) {
+  update(id: string, updateRentalDto: RentalDto) {
     return `This action updates a #${id} rental`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} rental`;
   }
 }

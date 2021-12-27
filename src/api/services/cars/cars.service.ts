@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import CreateCarDto from '@dto/cars/create-car.dto';
-import UpdateCarDto from '@dto/cars/update-car.dto';
+import CarDto from '@dto/cars/car.dto';
+import SearchCarDto from '@dto/cars/search-car.dto';
 
 @Injectable()
 export default class CarsService {
-  create(createCarDto: CreateCarDto) {
+  create(createCarDto: CarDto) {
     return 'This action adds a new car';
   }
 
-  findAll() {
+  findAll(payload: SearchCarDto) {
     return `This action returns all cars`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} car`;
   }
 
-  update(id: number, updateCarDto: UpdateCarDto) {
+  update(id: string, updateCarDto: CarDto) {
     return `This action updates a #${id} car`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} car`;
   }
 }

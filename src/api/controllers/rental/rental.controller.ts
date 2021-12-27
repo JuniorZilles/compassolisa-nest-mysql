@@ -1,34 +1,56 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, ParseUUIDPipe, Put } from '@nestjs/common';
 import RentalService from '@services/rental/rental.service';
-import CreateRentalDto from '@dto/rental/create-rental.dto';
-import UpdateRentalDto from '@dto/rental/update-rental.dto';
+import RentalDto from '@dto/rental/rental.dto';
+import {
+  ApiBadRequestResponse,
+  ApiCreatedResponse,
+  ApiInternalServerErrorResponse,
+  ApiNoContentResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags
+} from '@nestjs/swagger';
+import ErrorDto from '@dto/error.dto';
+import SearchRentalDto from '@dto/rental/search-rental.dto';
+import ListRentalDto from '@dto/rental/list-rental.dto';
 
+@ApiTags('rental')
 @Controller({ path: '/rental', version: '1' })
+@ApiBadRequestResponse({ description: 'Bad Request.', type: ErrorDto, isArray: true })
+@ApiInternalServerErrorResponse({ description: 'Internal Server Error.', type: ErrorDto, isArray: true })
 export default class RentalController {
   constructor(private readonly rentalService: RentalService) {}
 
   @Post()
-  create(@Body() createRentalDto: CreateRentalDto) {
+  @ApiCreatedResponse({ description: 'Rental created.', type: RentalDto })
+  create(@Body() createRentalDto: RentalDto) {
     return this.rentalService.create(createRentalDto);
   }
 
   @Get()
-  findAll() {
-    return this.rentalService.findAll();
+  @ApiOkResponse({ description: 'Operation succeeded.', type: ListRentalDto })
+  findAll(@Param() payload: SearchRentalDto) {
+    return this.rentalService.findAll(payload);
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
+  @ApiOkResponse({ description: 'Operation succeeded.', type: RentalDto })
+  @ApiNotFoundResponse({ description: 'The rental company was not found.', type: ErrorDto, isArray: true })
+  findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.rentalService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() updateRentalDto: UpdateRentalDto) {
+  @Put(':id')
+  @ApiOkResponse({ description: 'Rental company updated.', type: RentalDto })
+  @ApiNotFoundResponse({ description: 'The rental company was not found.', type: ErrorDto, isArray: true })
+  update(@Param('id', ParseUUIDPipe) id: string, @Body() updateRentalDto: RentalDto) {
     return this.rentalService.update(id, updateRentalDto);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
+  @ApiNoContentResponse({ description: 'Rental company removed.' })
+  @ApiNotFoundResponse({ description: 'The rental company was not found.', type: ErrorDto, isArray: true })
+  remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.rentalService.remove(id);
   }
 }
