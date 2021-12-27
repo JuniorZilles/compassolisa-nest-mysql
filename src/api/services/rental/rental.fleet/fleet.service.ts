@@ -9,7 +9,7 @@ export default class FleetService {
   }
 
   findAll() {
-    return `This action returns all fleet`;
+    return 'This action returns all fleet';
   }
 
   findOne(id: number) {
