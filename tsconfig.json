@@ -1,63 +1,57 @@
 {
-   "include": [
-     "src/**/*",
-     "test/**/*"
-   ],
-   "compilerOptions": {
-      "lib": [
-         "es5",
-         "es6"
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "moduleResolution": "node",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2021",
+    "lib": [
+      "ES6"
+    ],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": true,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
+    "paths": {
+      "@modules/*": [
+        "./src/api/modules/*"
       ],
-     "module": "commonjs",
-     "declaration": true,
-     "moduleResolution": "node",
-     "removeComments": true,
-     "emitDecoratorMetadata": true,
-     "experimentalDecorators": true,
-     "allowSyntheticDefaultImports": true,
-     "target": "es2017",
-     "sourceMap": true,
-     "outDir": "./dist",
-     "baseUrl": "./",
-     "skipLibCheck": true,
-     "strictNullChecks": false,
-     "noImplicitAny": false,
-     "strictBindCallApply": false,
-     "forceConsistentCasingInFileNames": false,
-     "noFallthroughCasesInSwitch": false,
-     "typeRoots": [
-       "./node_modules/@types",
-       "./src/@types"
-     ],
-     "paths": {
-       "@modules/*": [
-         "./src/api/modules/*"
-       ],
-       "@controllers/*": [
-         "./src/api/controllers/*"
-       ],
-       "@entities/*": [
-         "./src/api/entities/*"
-       ],
-       "@repositories/*": [
-         "./src/api/repositories/*"
-       ],
-       "@services/*": [
-         "./src/api/services/*"
-       ],
-       "@validations/*": [
-         "./src/api/validations/*"
-       ],
-       "@middlewares/*": [
-         "./src/api/middlewares/*"
-       ],
-       "@dto/*": [
-         "./src/api/dto/*"
-       ],
-       "@utils/*": [
-         "./src/api/utils/*"
-       ]
-     }
-   }
- }
- 
+      "@controllers/*": [
+        "./src/api/controllers/*"
+      ],
+      "@entities/*": [
+        "./src/api/entities/*"
+      ],
+      "@repositories/*": [
+        "./src/api/repositories/*"
+      ],
+      "@services/*": [
+        "./src/api/services/*"
+      ],
+      "@validations/*": [
+        "./src/api/validations/*"
+      ],
+      "@middlewares/*": [
+        "./src/api/middlewares/*"
+      ],
+      "@dto/*": [
+        "./src/api/dto/*"
+      ],
+      "@utils/*": [
+        "./src/api/utils/*"
+      ]
+    }
+  }
+}
