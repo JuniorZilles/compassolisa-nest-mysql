@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AccessoryController } from '@controllers/cars/cars.accessory/accessory.controller';
-import { AccessoryService } from '@services/cars/cars.accessory/accessory.service';
+import AccessoryController from '@controllers/cars/cars.accessory/accessory.controller';
+import AccessoryService from '@services/cars/cars.accessory/accessory.service';
 
 describe('scr :: api :: controllers :: cars :: cars.accessory :: AccessoryController()', () => {
   describe('GIVEN a context that AccessoryModule is not instantiated', () => {

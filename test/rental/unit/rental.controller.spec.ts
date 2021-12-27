@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RentalController } from '@controllers/rental/rental.controller';
-import { RentalService } from '@services/rental/rental.service';
+import RentalController from '@controllers/rental/rental.controller';
+import RentalService from '@services/rental/rental.service';
 
 describe('scr :: api :: controllers :: rental :: RentalController()', () => {
   describe('GIVEN a context that RentalModule is not instantiated', () => {

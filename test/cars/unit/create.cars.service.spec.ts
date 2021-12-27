@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CarsService } from '@services/cars/cars.service';
+import CarsService from '@services/cars/cars.service';
 
 describe('scr :: api :: service :: cars :: create()', () => {
   describe('CarsService', () => {

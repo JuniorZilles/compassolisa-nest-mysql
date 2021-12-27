@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AccessoryService } from '@services/cars/cars.accessory/accessory.service';
+import AccessoryService from '@services/cars/cars.accessory/accessory.service';
 
 describe('scr :: api :: service :: cars :: cars.accessory :: AccessoryService()', () => {
   describe('GIVEN a context that a Module is not instantiated', () => {

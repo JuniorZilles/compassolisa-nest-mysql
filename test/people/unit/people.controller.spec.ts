@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PeopleController } from '@controllers/people/people.controller';
-import { PeopleService } from '@services/people/people.service';
+import PeopleController from '@controllers/people/people.controller';
+import PeopleService from '@services/people/people.service';
 
 describe('scr :: api :: controllers :: people :: PeopleController()', () => {
   describe('GIVEN a context that PeopleModule is not instantiated', () => {

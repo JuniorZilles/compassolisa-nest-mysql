@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PeopleService } from '@services/people/people.service';
+import PeopleService from '@services/people/people.service';
 
 describe('scr :: api :: service :: people :: PeopleService()', () => {
   describe('GIVEN a context that a Module is not instantiated', () => {

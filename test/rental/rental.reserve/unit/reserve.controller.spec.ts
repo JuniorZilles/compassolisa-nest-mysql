@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ReserveController } from '@controllers/rental/rental.reserve/reserve.controller';
-import { ReserveService } from '@services/rental/rental.reserve/reserve.service';
+import ReserveController from '@controllers/rental/rental.reserve/reserve.controller';
+import ReserveService from '@services/rental/rental.reserve/reserve.service';
 
 describe('scr :: api :: controllers :: rental :: rental.reserve :: ReserveController()', () => {
   describe('GIVEN a context that ReserveModule is not instantiated', () => {

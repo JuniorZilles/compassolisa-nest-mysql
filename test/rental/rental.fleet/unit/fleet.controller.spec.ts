@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { FleetController } from '@controllers/rental/rental.fleet/fleet.controller';
-import { FleetService } from '@services/rental/rental.fleet/fleet.service';
+import FleetController from '@controllers/rental/rental.fleet/fleet.controller';
+import FleetService from '@services/rental/rental.fleet/fleet.service';
 
 describe('scr :: api :: controllers :: rental :: rental.fleet :: FleetController()', () => {
   describe('GIVEN a context that FleetModule is not instantiated', () => {
