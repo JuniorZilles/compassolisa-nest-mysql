@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import Joi from 'joi';
+import * as Joi from 'Joi';
 import Extension from '@joi/date';
 import transformToArray from '@validations/utils/transformJoiResult';
 import { moneyRegex } from '@validations/utils/regex';

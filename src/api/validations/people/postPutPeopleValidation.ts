@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
 import Extension from '@joi/date';
-import Joi from 'joi';
+import * as Joi from 'Joi';
 import transformToArray from '@validations/utils/transformJoiResult';
 import { cpfRegex } from '@validations/utils/regex';
 import { Injectable, NestMiddleware } from '@nestjs/common';

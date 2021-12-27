@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 
-import Joi from 'joi';
+import * as Joi from 'Joi';
 import Extension from '@joi/date';
 import transformToArray from '@validations/utils/transformJoiResult';
-import { idRegex } from '@validations/utils/regex';
 import { Injectable, NestMiddleware } from '@nestjs/common';
 
 const JoiDate = Joi.extend(Extension);
