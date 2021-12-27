@@ -8,7 +8,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn
 } from 'typeorm';
-import Endereco from './Endereco.entity';
+import Endereco from './endereco.entity';
 
 @Entity('rental')
 export default class Rental {
