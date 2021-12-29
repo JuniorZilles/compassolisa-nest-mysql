@@ -1,8 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable import/no-cycle */
 import Car from '@entities/cars/car.entity';
 import { Exclude } from 'class-transformer';
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm';
 import Rental from '../rental.entity';
+import Reserve from '../rental.reserve/reserve.entity';
 
 @Entity('fleet')
 export default class Fleet {
@@ -18,22 +27,24 @@ export default class Fleet {
   @Column({ nullable: false })
   valor_diaria: number;
 
-  @ManyToOne((type) => Car, (car) => car.id)
-  @Column({ type: 'uuid', nullable: false })
-  id_carro: string;
+  @ManyToOne(() => Car, (car) => car.id, { onDelete: 'CASCADE' })
+  carro: Car;
 
-  @ManyToOne((type) => Rental, (rental) => rental.id)
-  @Column({ type: 'uuid', nullable: false })
-  id_rental: string;
+  @ManyToOne(() => Rental, (rental) => rental.id, { onDelete: 'CASCADE' })
+  rental: Rental;
+
+  @OneToMany(() => Reserve, (reserve) => reserve.fleet, { onDelete: 'CASCADE' })
+  reserves: Reserve[];
 
   @Exclude()
-  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)', select: false })
   created_at: Date;
 
   @Exclude()
   @UpdateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)'
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    select: false
   })
   updated_at: Date;
 }

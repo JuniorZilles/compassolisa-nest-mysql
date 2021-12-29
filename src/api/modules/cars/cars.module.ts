@@ -4,10 +4,12 @@ import CarsController from '@controllers/cars/cars.controller';
 import CarGetValidationMiddleware from '@validations/car/getCarValidation';
 import CarPostPutValidationMiddleware from '@validations/car/postPutCarValidation';
 import IdValidationMiddleware from '@validations/idValidation';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import CarsRepository from '@repositories/cars/cars.repository';
 import AccessoryModule from './cars.accessory/accessory.module';
 
 @Module({
-  imports: [AccessoryModule],
+  imports: [TypeOrmModule.forFeature([CarsRepository]), AccessoryModule],
   controllers: [CarsController],
   providers: [CarsService]
 })

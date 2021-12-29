@@ -8,11 +8,11 @@ export default class Acessorios1639767296627 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
             isGenerated: true,
             isNullable: false,
-            generationStrategy: 'increment'
+            generationStrategy: 'uuid'
           },
           {
             name: 'descricao',
@@ -20,8 +20,8 @@ export default class Acessorios1639767296627 implements MigrationInterface {
             isNullable: false
           },
           {
-            name: 'id_carro',
-            type: 'int',
+            name: 'carroId',
+            type: 'varchar',
             isNullable: false
           },
           {
@@ -41,7 +41,7 @@ export default class Acessorios1639767296627 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'accessories',
       new TableForeignKey({
-        columnNames: ['id_carro'],
+        columnNames: ['carroId'],
         referencedColumnNames: ['id'],
         referencedTableName: 'cars',
         onDelete: 'CASCADE'

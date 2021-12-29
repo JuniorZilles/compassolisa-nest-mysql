@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Param, Delete, ParseUUIDPipe, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+  Put,
+  ClassSerializerInterceptor,
+  UseInterceptors
+} from '@nestjs/common';
 import FleetService from '@services/rental/rental.fleet/fleet.service';
 import FleetDto from '@dto/rental/rental.fleet/fleet.dto';
 import SearchFleetDto from '@dto/rental/rental.fleet/search-fleet.dto';
@@ -16,6 +27,7 @@ import ListFleetDto from '@dto/rental/rental.fleet/list-fleet.dto';
 
 @ApiTags('rental.fleet')
 @Controller({ path: '/rental/:id/fleet', version: '1' })
+@UseInterceptors(ClassSerializerInterceptor)
 @ApiNotFoundResponse({ description: 'The car was not found.', type: ErrorDto, isArray: true })
 @ApiBadRequestResponse({ description: 'Bad Request.', type: ErrorDto, isArray: true })
 @ApiInternalServerErrorResponse({ description: 'Internal Server Error.', type: ErrorDto, isArray: true })

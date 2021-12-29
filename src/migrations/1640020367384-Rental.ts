@@ -8,11 +8,11 @@ export default class Rental1640020367384 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
             isGenerated: true,
             isNullable: false,
-            generationStrategy: 'increment'
+            generationStrategy: 'uuid'
           },
           {
             name: 'nome',

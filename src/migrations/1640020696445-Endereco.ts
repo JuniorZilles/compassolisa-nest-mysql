@@ -8,11 +8,11 @@ export default class Endereco1640020696445 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
             isGenerated: true,
             isNullable: false,
-            generationStrategy: 'increment'
+            generationStrategy: 'uuid'
           },
           {
             name: 'cep',
@@ -55,8 +55,8 @@ export default class Endereco1640020696445 implements MigrationInterface {
             isNullable: false
           },
           {
-            name: 'id_rental',
-            type: 'int',
+            name: 'rentalId',
+            type: 'varchar',
             isNullable: false
           },
           {
@@ -76,7 +76,7 @@ export default class Endereco1640020696445 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'endereco',
       new TableForeignKey({
-        columnNames: ['id_rental'],
+        columnNames: ['rentalId'],
         referencedColumnNames: ['id'],
         referencedTableName: 'rental',
         onDelete: 'CASCADE'

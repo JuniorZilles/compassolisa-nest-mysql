@@ -1,6 +1,9 @@
+/* eslint-disable import/no-cycle */
 import { Exclude } from 'class-transformer';
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import Endereco from './endereco.entity';
+import Fleet from './rental.fleet/fleet.entity';
+import Reserve from './rental.reserve/reserve.entity';
 
 @Entity('rental')
 export default class Rental {
@@ -16,18 +19,24 @@ export default class Rental {
   @Column({ nullable: false })
   atividades: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  @OneToMany((type) => Endereco, (address) => address.id_rental)
+  @OneToMany(() => Endereco, (address) => address.rental, { onDelete: 'CASCADE', cascade: true })
   endereco: Endereco[];
 
+  @OneToMany(() => Fleet, (fleet) => fleet.rental, { onDelete: 'CASCADE' })
+  fleets: Fleet[];
+
+  @OneToMany(() => Reserve, (reserve) => reserve.rental, { onDelete: 'CASCADE' })
+  reserves: Reserve[];
+
   @Exclude()
-  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)', select: false })
   created_at: Date;
 
   @Exclude()
   @UpdateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)'
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    select: false
   })
   updated_at: Date;
 }

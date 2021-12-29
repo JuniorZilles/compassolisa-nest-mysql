@@ -1,5 +1,6 @@
+import Reserve from '@entities/rental/rental.reserve/reserve.entity';
 import { Exclude } from 'class-transformer';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('people')
 export default class Person {
@@ -22,20 +23,25 @@ export default class Person {
   @Column({ type: 'date', nullable: false })
   data_nascimento: Date;
 
+  @Exclude()
   @Column({ nullable: false })
   senha: string;
 
   @Column({ nullable: false, type: 'enum', enumName: 'habilitadoEnum', enum: ['sim', 'não'] })
   habilitado: string;
 
+  @OneToMany(() => Reserve, (reserve) => reserve.person, { onDelete: 'CASCADE' })
+  reserves: Reserve[];
+
   @Exclude()
-  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)', select: false })
   created_at: Date;
 
   @Exclude()
   @UpdateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)'
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    select: false
   })
   updated_at: Date;
 }

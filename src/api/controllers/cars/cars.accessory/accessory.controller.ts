@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+  ClassSerializerInterceptor,
+  UseInterceptors
+} from '@nestjs/common';
 import AccessoryService from '@services/cars/cars.accessory/accessory.service';
 import CreateAccessoryDto from '@dto/cars/cars.accessory/create-accessory.dto';
 import UpdateAccessoryDto from '@dto/cars/cars.accessory/update-accessory.dto';
@@ -15,6 +26,7 @@ import ErrorDto from '@dto/error.dto';
 
 @ApiTags('car.accessories')
 @Controller({ path: '/cars/:id/accessory', version: '1' })
+@UseInterceptors(ClassSerializerInterceptor)
 @ApiNotFoundResponse({ description: 'Accessory not found.' })
 @ApiBadRequestResponse({ description: 'Bad Request.', type: ErrorDto, isArray: true })
 @ApiInternalServerErrorResponse({ description: 'Internal Server Error.', type: ErrorDto, isArray: true })

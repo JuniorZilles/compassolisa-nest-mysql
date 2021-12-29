@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+// eslint-disable-next-line import/no-cycle
+import Rental from './rental.entity';
 
 @Entity('endereco')
 export default class Endereco {
@@ -11,8 +13,8 @@ export default class Endereco {
   @Column({ nullable: false })
   isFilial: boolean;
 
-  @Column({ type: 'uuid', nullable: false })
-  id_rental: string;
+  @ManyToOne(() => Rental, (rental) => rental.id, { onDelete: 'CASCADE' })
+  rental: Rental;
 
   @Column({ nullable: false })
   cep: string;

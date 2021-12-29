@@ -8,11 +8,11 @@ export default class Cars1639766855988 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
             isGenerated: true,
             isNullable: false,
-            generationStrategy: 'increment'
+            generationStrategy: 'uuid'
           },
           {
             name: 'modelo',

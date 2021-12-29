@@ -8,11 +8,11 @@ export default class Fleet1640021072676 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
             isGenerated: true,
             isNullable: false,
-            generationStrategy: 'increment'
+            generationStrategy: 'uuid'
           },
           {
             name: 'status',
@@ -32,13 +32,13 @@ export default class Fleet1640021072676 implements MigrationInterface {
             isNullable: false
           },
           {
-            name: 'id_rental',
-            type: 'int',
+            name: 'rentalId',
+            type: 'varchar',
             isNullable: false
           },
           {
-            name: 'id_car',
-            type: 'int',
+            name: 'carroId',
+            type: 'varchar',
             isNullable: false
           },
           {
@@ -58,7 +58,7 @@ export default class Fleet1640021072676 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'fleet',
       new TableForeignKey({
-        columnNames: ['id_rental'],
+        columnNames: ['rentalId'],
         referencedColumnNames: ['id'],
         referencedTableName: 'rental',
         onDelete: 'CASCADE'
@@ -68,7 +68,7 @@ export default class Fleet1640021072676 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'fleet',
       new TableForeignKey({
-        columnNames: ['id_car'],
+        columnNames: ['carroId'],
         referencedColumnNames: ['id'],
         referencedTableName: 'cars',
         onDelete: 'CASCADE'

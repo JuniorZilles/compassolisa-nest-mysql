@@ -1,5 +1,7 @@
 import { Exclude } from 'class-transformer';
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+// eslint-disable-next-line import/no-cycle
+import Car from '../car.entity';
 
 @Entity('accessories')
 export default class Accessory {
@@ -9,17 +11,18 @@ export default class Accessory {
   @Column({ nullable: false })
   descricao: string;
 
-  @Column({ type: 'uuid', nullable: false })
-  id_car: string;
+  @ManyToOne(() => Car, (car) => car.id, { onDelete: 'CASCADE' })
+  carro: Car;
 
   @Exclude()
-  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)' })
+  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)', select: false })
   created_at: Date;
 
   @Exclude()
   @UpdateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)'
+    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    select: false
   })
   updated_at: Date;
 }

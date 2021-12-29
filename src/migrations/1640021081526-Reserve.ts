@@ -8,11 +8,11 @@ export default class Reserve1640021081526 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'varchar',
             isPrimary: true,
             isGenerated: true,
             isNullable: false,
-            generationStrategy: 'increment'
+            generationStrategy: 'uuid'
           },
           {
             name: 'data_fim',
@@ -30,18 +30,18 @@ export default class Reserve1640021081526 implements MigrationInterface {
             isNullable: false
           },
           {
-            name: 'id_rental',
-            type: 'int',
+            name: 'rentalId',
+            type: 'varchar',
             isNullable: false
           },
           {
-            name: 'id_fleet',
-            type: 'int',
+            name: 'fleetId',
+            type: 'varchar',
             isNullable: false
           },
           {
-            name: 'id_user',
-            type: 'int',
+            name: 'userId',
+            type: 'varchar',
             isNullable: false
           },
           {
@@ -61,7 +61,7 @@ export default class Reserve1640021081526 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'reserve',
       new TableForeignKey({
-        columnNames: ['id_rental'],
+        columnNames: ['rentalId'],
         referencedColumnNames: ['id'],
         referencedTableName: 'rental',
         onDelete: 'CASCADE'
@@ -71,7 +71,7 @@ export default class Reserve1640021081526 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'reserve',
       new TableForeignKey({
-        columnNames: ['id_user'],
+        columnNames: ['userId'],
         referencedColumnNames: ['id'],
         referencedTableName: 'people',
         onDelete: 'CASCADE'
@@ -81,7 +81,7 @@ export default class Reserve1640021081526 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'reserve',
       new TableForeignKey({
-        columnNames: ['id_fleet'],
+        columnNames: ['fleetId'],
         referencedColumnNames: ['id'],
         referencedTableName: 'fleet',
         onDelete: 'CASCADE'

@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Param, Delete, ParseUUIDPipe, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+  Put,
+  ClassSerializerInterceptor,
+  UseInterceptors
+} from '@nestjs/common';
 import RentalService from '@services/rental/rental.service';
 import RentalDto from '@dto/rental/rental.dto';
 import {
@@ -16,6 +27,7 @@ import ListRentalDto from '@dto/rental/list-rental.dto';
 
 @ApiTags('rental')
 @Controller({ path: '/rental', version: '1' })
+@UseInterceptors(ClassSerializerInterceptor)
 @ApiBadRequestResponse({ description: 'Bad Request.', type: ErrorDto, isArray: true })
 @ApiInternalServerErrorResponse({ description: 'Internal Server Error.', type: ErrorDto, isArray: true })
 export default class RentalController {

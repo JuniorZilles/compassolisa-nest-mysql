@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Param, Delete, ParseUUIDPipe, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+  Put,
+  ClassSerializerInterceptor,
+  UseInterceptors
+} from '@nestjs/common';
 import ReserveService from '@services/rental/rental.reserve/reserve.service';
 import ReserveDto from '@dto/rental/rental.reserve/reserve.dto';
 import SearchReserveDto from '@dto/rental/rental.reserve/search-reserve.dto';
@@ -16,6 +27,7 @@ import ListReserveDto from '@dto/rental/rental.reserve/list-reserve.dto';
 
 @ApiTags('rental.reserve')
 @Controller({ path: '/rental/:id/reserve', version: '1' })
+@UseInterceptors(ClassSerializerInterceptor)
 @ApiBadRequestResponse({ description: 'Bad Request.', type: ErrorDto, isArray: true })
 @ApiNotFoundResponse({ description: 'The reservation was not found.', type: ErrorDto, isArray: true })
 @ApiInternalServerErrorResponse({ description: 'Internal Server Error.', type: ErrorDto, isArray: true })

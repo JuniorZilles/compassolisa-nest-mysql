@@ -1,4 +1,15 @@
-import { Controller, Get, Post, Body, Param, Delete, ParseUUIDPipe, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  ParseUUIDPipe,
+  Put,
+  ClassSerializerInterceptor,
+  UseInterceptors
+} from '@nestjs/common';
 import PeopleService from '@services/people/people.service';
 import PersonDto from '@dto/people/person.dto';
 import SearchPersonDto from '@dto/people/search-person.dto';
@@ -16,6 +27,7 @@ import ListPersonDto from '@dto/people/list-person.dto';
 
 @ApiTags('people')
 @Controller({ path: '/people', version: '1' })
+@UseInterceptors(ClassSerializerInterceptor)
 @ApiBadRequestResponse({ description: 'Bad Request.', type: ErrorDto, isArray: true })
 @ApiInternalServerErrorResponse({ description: 'Internal Server Error.', type: ErrorDto, isArray: true })
 export default class PeopleController {

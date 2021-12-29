@@ -8,7 +8,6 @@ import Reserve from '@entities/rental/rental.reserve/reserve.entity';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import CarsRepository from '@repositories/cars/cars.repository';
 
 @Module({
   imports: [
@@ -26,8 +25,6 @@ import CarsRepository from '@repositories/cars/cars.repository';
       synchronize: true,
       logging: false
     })
-  ],
-  providers: [CarsRepository],
-  exports: [CarsRepository]
+  ]
 })
 export default class MysqlModule {}
