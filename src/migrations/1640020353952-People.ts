@@ -44,17 +44,18 @@ export default class People1640020353952 implements MigrationInterface {
             name: 'habilitado',
             type: 'enum',
             isNullable: false,
+            enumName: 'habilitadoEnum',
             enum: ['sim', 'não']
           },
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP'
+            default: 'CURRENT_TIMESTAMP(6)'
           },
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP'
+            default: 'CURRENT_TIMESTAMP(6)'
           }
         ]
       })

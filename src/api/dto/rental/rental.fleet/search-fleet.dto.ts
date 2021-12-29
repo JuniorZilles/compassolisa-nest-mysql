@@ -10,6 +10,7 @@ export default class SearchFleetDto {
   @ApiProperty({
     description: 'Car status',
     required: false,
+    enumName: 'statusEnum',
     enum: ['disponível', 'indisponível']
   })
   status?: string;

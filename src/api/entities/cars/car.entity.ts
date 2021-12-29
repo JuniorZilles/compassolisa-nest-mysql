@@ -1,19 +1,11 @@
 import { Exclude } from 'class-transformer';
-import {
-  BeforeInsert,
-  BeforeUpdate,
-  Column,
-  CreateDateColumn,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn
-} from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import Accessory from './cars.accessory/accessory.entity';
 
 @Entity('cars')
 export default class Car {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column({ nullable: false })
   modelo: string;
@@ -32,21 +24,13 @@ export default class Car {
   quantidadePassageiros: number;
 
   @Exclude()
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)' })
   created_at: Date;
 
   @Exclude()
-  @CreateDateColumn({ type: 'timestamp' })
+  @UpdateDateColumn({
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)'
+  })
   updated_at: Date;
-
-  @BeforeUpdate()
-  updateDates() {
-    this.updated_at = new Date();
-  }
-
-  @BeforeInsert()
-  setDates() {
-    this.created_at = new Date();
-    this.updated_at = new Date();
-  }
 }

@@ -29,6 +29,7 @@ export default class SearchPersonDto {
   @ApiProperty({
     description: 'Person is habilitated',
     enum: ['sim', 'não'],
+    enumName: 'habilitadoEnum',
     required: false
   })
   habilitado?: string;

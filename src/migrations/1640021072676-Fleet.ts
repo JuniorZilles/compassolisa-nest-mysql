@@ -17,6 +17,7 @@ export default class Fleet1640021072676 implements MigrationInterface {
           {
             name: 'status',
             type: 'enum',
+            enumName: 'statusEnum',
             enum: ['disponível', 'indisponível'],
             isNullable: false
           },
@@ -43,12 +44,12 @@ export default class Fleet1640021072676 implements MigrationInterface {
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP'
+            default: 'CURRENT_TIMESTAMP(6)'
           },
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP'
+            default: 'CURRENT_TIMESTAMP(6)'
           }
         ]
       })

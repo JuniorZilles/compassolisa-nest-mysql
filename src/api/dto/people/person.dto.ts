@@ -37,6 +37,7 @@ export default class PersonDto {
 
   @ApiProperty({
     description: 'Person is habilitated',
+    enumName: 'habilitadoEnum',
     enum: ['sim', 'não']
   })
   habilitado: string;

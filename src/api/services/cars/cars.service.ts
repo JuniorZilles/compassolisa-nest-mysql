@@ -1,11 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import CarDto from '@dto/cars/car.dto';
 import SearchCarDto from '@dto/cars/search-car.dto';
+import CarsRepository from '@repositories/cars/cars.repository';
 
 @Injectable()
 export default class CarsService {
-  create(createCarDto: CarDto) {
-    return 'This action adds a new car';
+  constructor(private readonly carRepo: CarsRepository) {}
+
+  async create(createCarDto: CarDto): Promise<CarDto> {
+    const car = await this.carRepo.create(createCarDto);
+    return car;
   }
 
   findAll(payload: SearchCarDto) {

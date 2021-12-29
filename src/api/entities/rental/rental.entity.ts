@@ -1,19 +1,11 @@
 import { Exclude } from 'class-transformer';
-import {
-  BeforeInsert,
-  BeforeUpdate,
-  Column,
-  CreateDateColumn,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn
-} from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import Endereco from './endereco.entity';
 
 @Entity('rental')
 export default class Rental {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column({ nullable: false })
   nome: string;
@@ -29,21 +21,13 @@ export default class Rental {
   endereco: Endereco[];
 
   @Exclude()
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP(6)' })
   created_at: Date;
 
   @Exclude()
-  @CreateDateColumn({ type: 'timestamp' })
+  @UpdateDateColumn({
+    default: () => 'CURRENT_TIMESTAMP(6)',
+    onUpdate: 'CURRENT_TIMESTAMP(6)'
+  })
   updated_at: Date;
-
-  @BeforeInsert()
-  setDates() {
-    this.created_at = new Date();
-    this.updated_at = new Date();
-  }
-
-  @BeforeUpdate()
-  updateDates() {
-    this.updated_at = new Date();
-  }
 }

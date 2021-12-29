@@ -14,6 +14,7 @@ export default class FleetDto {
 
   @ApiProperty({
     description: 'Car status',
+    enumName: 'statusEnum',
     enum: ['disponível', 'indisponível']
   })
   status: string;
