@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export default class CreateAccessoryDto {
+export default class AccessoryDto {
   @ApiProperty({
     description: 'The car accessory name'
   })

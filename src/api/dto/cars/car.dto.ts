@@ -1,4 +1,4 @@
-import CreateAccessoryDto from '@dto/cars/cars.accessory/create-accessory.dto';
+import CreateAccessoryDto from '@dto/cars/cars.accessory/accessory.dto';
 import { ApiProperty } from '@nestjs/swagger';
 
 export default class CarDto {

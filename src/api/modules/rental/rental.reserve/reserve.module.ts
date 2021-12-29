@@ -4,8 +4,11 @@ import ReserveController from '@controllers/rental/rental.reserve/reserve.contro
 import RentalReservePostPutValidationMiddleware from '@validations/rental/reserve/postputReserveValidation';
 import RentalReserveIdValidationMiddleware from '@validations/rental/reserve/idReserveValidation';
 import RentalReserveGetValidationMiddleware from '@validations/rental/reserve/getReserveValidation';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import ReserveRepository from '@repositories/rental/rental.reserve/reserve.repository';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([ReserveRepository])],
   controllers: [ReserveController],
   providers: [ReserveService]
 })

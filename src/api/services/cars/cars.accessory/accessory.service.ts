@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import CreateAccessoryDto from '@dto/cars/cars.accessory/create-accessory.dto';
+import AccessoryDto from '@dto/cars/cars.accessory/accessory.dto';
 import UpdateAccessoryDto from '@dto/cars/cars.accessory/update-accessory.dto';
 
 @Injectable()
 export default class AccessoryService {
-  create(id: string, createAccessoryDto: CreateAccessoryDto) {
+  create(id: string, createAccessoryDto: AccessoryDto) {
     return `This action adds a new accessory to car #${id}`;
   }
 

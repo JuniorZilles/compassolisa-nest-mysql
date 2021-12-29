@@ -3,8 +3,11 @@ import AccessoryService from '@services/cars/cars.accessory/accessory.service';
 import AccessoryController from '@controllers/cars/cars.accessory/accessory.controller';
 import AccessoryIdPatchValidationMiddleware from '@validations/car/accessory/patchAccessoryIdValidation';
 import AccessoryPatchValidationMiddleware from '@validations/car/accessory/patchAccessoryValidation';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import AccessoryRepository from '@repositories/cars/cars.accessory/accessory.repository';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([AccessoryRepository])],
   controllers: [AccessoryController],
   providers: [AccessoryService]
 })

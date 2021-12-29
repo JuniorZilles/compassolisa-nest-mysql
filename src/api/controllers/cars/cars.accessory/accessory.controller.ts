@@ -11,7 +11,7 @@ import {
   UseInterceptors
 } from '@nestjs/common';
 import AccessoryService from '@services/cars/cars.accessory/accessory.service';
-import CreateAccessoryDto from '@dto/cars/cars.accessory/create-accessory.dto';
+import CreateAccessoryDto from '@dto/cars/cars.accessory/accessory.dto';
 import UpdateAccessoryDto from '@dto/cars/cars.accessory/update-accessory.dto';
 import {
   ApiBadRequestResponse,

@@ -4,8 +4,11 @@ import PeopleController from '@controllers/people/people.controller';
 import PeopleGetValidationMiddleware from '@validations/people/getPeopleValidation';
 import PeoplePostPutValidationMiddleware from '@validations/people/postPutPeopleValidation';
 import IdValidationMiddleware from '@validations/idValidation';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import PeopleRepository from '@repositories/people/people.repository';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([PeopleRepository])],
   controllers: [PeopleController],
   providers: [PeopleService]
 })

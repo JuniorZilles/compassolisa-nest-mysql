@@ -4,8 +4,11 @@ import FleetController from '@controllers/rental/rental.fleet/fleet.controller';
 import RentalFleetIdValidationMiddleware from '@validations/rental/fleet/idFleetValidation';
 import RentalFleetGetValidationMiddleware from '@validations/rental/fleet/getFleetValidation';
 import RentalFleetPostPutValidationMiddleware from '@validations/rental/fleet/postputFleetValidation';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import FleetRepository from '@repositories/rental/rental.fleet/fleet.repository';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([FleetRepository])],
   controllers: [FleetController],
   providers: [FleetService]
 })
