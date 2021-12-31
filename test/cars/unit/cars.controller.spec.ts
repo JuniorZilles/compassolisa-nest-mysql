@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import CarsController from '@controllers/cars/cars.controller';
 import CarsService from '@services/cars/cars.service';
+import CarsRepository from '@repositories/cars/cars.repository';
+import mockCarRepository from '../../utils/mocks/cars.repository.mock';
 
 describe('scr :: api :: controllers :: cars :: CarsController()', () => {
   describe('GIVEN a context that CarsModule is not instantiated', () => {
@@ -10,8 +12,11 @@ describe('scr :: api :: controllers :: cars :: CarsController()', () => {
       beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
           controllers: [CarsController],
-          providers: [CarsService]
-        }).compile();
+          providers: [CarsRepository, CarsService]
+        })
+          .overrideProvider(CarsRepository)
+          .useValue(mockCarRepository)
+          .compile();
 
         controller = module.get<CarsController>(CarsController);
       });

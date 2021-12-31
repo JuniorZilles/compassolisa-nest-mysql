@@ -1,38 +1,33 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import CarsService from '@services/cars/cars.service';
-import CarDto from '@dto/cars/car.dto';
-import MysqlModule from '../../../src/database/mysql/mysql.module';
+import CarsRepository from '@repositories/cars/cars.repository';
+import { Test, TestingModule } from '@nestjs/testing';
 import carFactory from '../../utils/factory/car.factory';
+import mockCarRepository from '../../utils/mocks/cars.repository.mock';
 
 describe('scr :: api :: service :: cars :: create()', () => {
   describe('GIVEN an empty database', () => {
     let service: CarsService;
-
     beforeEach(async () => {
       const module: TestingModule = await Test.createTestingModule({
-        imports: [MysqlModule],
-        providers: [CarsService]
-      }).compile();
+        providers: [CarsRepository, CarsService]
+      })
+        .overrideProvider(CarsRepository)
+        .useValue(mockCarRepository)
+        .compile();
 
       service = module.get<CarsService>(CarsService);
     });
 
     describe('WHEN creating a valid new car', () => {
-      let car: CarDto;
-      beforeEach(async () => {
-        car = await service.create(carFactory);
-      });
-      test('THEN it should insert a new car and return a ID', () => {
-        expect(car.id).toBeDefined();
-        expect(car.id).toBeInstanceOf(String);
-      });
-    });
+      test('THEN it should insert a new car and return a ID, and date of insert and update', async () => {
+        expect(await service.create(carFactory)).toEqual({
+          ...carFactory,
+          id: expect.any(String),
+          created_at: expect.any(Date),
+          updated_at: expect.any(Date)
+        });
 
-    describe('WHEN creating a invalid new car', () => {
-      test('THEN it should throw an error', async () => {
-        carFactory.acessorios = [];
-
-        expect(await service.create(carFactory)).toThrowError("The field 'acessorios' is out of the standard format");
+        expect(mockCarRepository.insertCar).toHaveBeenCalledWith(carFactory);
       });
     });
   });
