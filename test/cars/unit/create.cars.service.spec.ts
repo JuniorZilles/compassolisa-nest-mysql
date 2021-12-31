@@ -1,18 +1,19 @@
 import CarsService from '@services/cars/cars.service';
 import CarsRepository from '@repositories/cars/cars.repository';
 import { Test, TestingModule } from '@nestjs/testing';
-import carFactory from '../../utils/factory/car.factory';
-import mockCarRepository from '../../utils/mocks/cars.repository.mock';
+import { oneCar } from '../../utils/factory/car.factory';
+import { MOCKCARREPOSITORY } from '../../utils/mocks/cars.repository.mock';
 
 describe('scr :: api :: service :: cars :: create()', () => {
   describe('GIVEN an empty database', () => {
     let service: CarsService;
+    const carFactory = oneCar();
     beforeEach(async () => {
       const module: TestingModule = await Test.createTestingModule({
         providers: [CarsRepository, CarsService]
       })
         .overrideProvider(CarsRepository)
-        .useValue(mockCarRepository)
+        .useValue(MOCKCARREPOSITORY)
         .compile();
 
       service = module.get<CarsService>(CarsService);
@@ -27,7 +28,7 @@ describe('scr :: api :: service :: cars :: create()', () => {
           updated_at: expect.any(Date)
         });
 
-        expect(mockCarRepository.insertCar).toHaveBeenCalledWith(carFactory);
+        expect(MOCKCARREPOSITORY.insertCar).toHaveBeenCalledWith(carFactory);
       });
     });
   });

@@ -9,4 +9,9 @@ export default class CarsRepository extends Repository<Car> {
     await this.save(car);
     return car;
   }
+
+  async updateCar(id: string, updateCarDto: CarDto): Promise<CarDto> {
+    const car = await this.save({ id, updateCarDto });
+    return car;
+  }
 }
