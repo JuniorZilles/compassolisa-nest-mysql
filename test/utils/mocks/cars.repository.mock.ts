@@ -10,16 +10,32 @@ export const MOCKCARREPOSITORY = {
     created_at: new Date(),
     updated_at: new Date()
   })),
-  findOne: jest.fn((id) => ({
+  findById: jest.fn((id) => ({
     ...GENERATED.find((car) => car.id === id)
   })),
-  updateCar: jest.fn((id, dto) => {
+  update: jest.fn((id, dto) => {
     const index = GENERATED.findIndex((car) => car.id === id);
     GENERATED[index] = {
       ...GENERATED[index],
       ...dto,
       updated_at: new Date()
     };
-    return GENERATED[index];
+    return {
+      affected: index === -1 ? 0 : 1,
+      raw: GENERATED[index]
+    };
+  }),
+  delete: jest.fn((id) => {
+    const index = GENERATED.findIndex((car) => car.id === id);
+    if (index === -1) {
+      return {
+        affected: 0
+      };
+    }
+    const deleted = GENERATED.splice(index, 1);
+    return {
+      affected: deleted.length,
+      raw: deleted.pop()
+    };
   })
 };

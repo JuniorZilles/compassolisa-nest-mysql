@@ -2,13 +2,11 @@ import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import CarsRepository from '@repositories/cars/cars.repository';
 import CarsService from '@services/cars/cars.service';
-import { oneCar } from '../../utils/factory/car.factory';
 import { MOCKCARREPOSITORY, GENERATED, UUID } from '../../utils/mocks/cars.repository.mock';
 
-describe('scr :: api :: service :: cars :: update()', () => {
-  describe('GIVEN a existent car model', () => {
+describe('scr :: api :: service :: cars :: findById()', () => {
+  describe('GIVEN 10 existent cars', () => {
     let service: CarsService;
-    const carFactory = oneCar();
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const { id } = GENERATED[4];
     beforeEach(async () => {
@@ -22,30 +20,27 @@ describe('scr :: api :: service :: cars :: update()', () => {
       service = module.get<CarsService>(CarsService);
     });
 
-    describe('WHEN updating a existent car', () => {
-      test('THEN it should update the existing car by his ID, and update the updated_at', async () => {
-        const car = await service.update(id, carFactory);
+    describe('WHEN searching by one existing ID car', () => {
+      test('THEN it should return the existing car', async () => {
+        const car = await service.findById(id);
         expect(car).toEqual({
-          ...carFactory,
-          id,
-          created_at: expect.any(Date),
-          updated_at: expect.any(Date)
+          ...GENERATED[4]
         });
 
-        expect(MOCKCARREPOSITORY.update).toHaveBeenCalledWith(id, carFactory);
+        expect(MOCKCARREPOSITORY.findById).toHaveBeenCalledWith(id);
       });
     });
 
-    describe('WHEN updating a nonexistent car', () => {
+    describe('WHEN searching by one nonexistent car', () => {
       test('THEN it should throw a not found exception', async () => {
         try {
-          await service.update(UUID, carFactory);
+          await service.findById(UUID);
         } catch (e) {
           expect(e).toBeInstanceOf(NotFoundException);
           expect((<NotFoundException>e).name).toBe('NotFoundException');
           expect((<NotFoundException>e).message).toBe('Car not found');
         }
-        expect(MOCKCARREPOSITORY.update).toHaveBeenCalledWith(UUID, carFactory);
+        expect(MOCKCARREPOSITORY.findById).toHaveBeenCalledWith(UUID);
       });
     });
   });

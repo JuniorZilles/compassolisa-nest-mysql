@@ -17,7 +17,7 @@ export default class CarsService {
     return `This action returns all cars`;
   }
 
-  async findOne(id: string): Promise<CarDto> {
+  async findById(id: string): Promise<CarDto> {
     const car = await this.carRepo.findOne(id);
     if (!car || Object.keys(car).length === 0) {
       throw new NotFoundException('Car not found');
@@ -26,12 +26,18 @@ export default class CarsService {
   }
 
   async update(id: string, updateCarDto: CarDto): Promise<CarDto> {
-    await this.findOne(id);
-    const car = await this.carRepo.updateCar(id, updateCarDto);
-    return car;
+    const result = await this.carRepo.update(id, updateCarDto);
+    if (result.affected > 0) {
+      return result.raw;
+    }
+    throw new NotFoundException('Car not found');
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} car`;
+  async remove(id: string) {
+    const result = await this.carRepo.delete(id);
+    if (result.affected > 0) {
+      return result.raw;
+    }
+    throw new NotFoundException('Car not found');
   }
 }
