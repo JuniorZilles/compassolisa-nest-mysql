@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import Joi from 'joi';
+import * as Joi from 'Joi';
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import transformToArray from './utils/transformJoiResult';
 

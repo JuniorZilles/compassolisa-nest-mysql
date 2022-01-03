@@ -2,7 +2,7 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import transformToArray from '@validations/utils/transformJoiResult';
 import { NextFunction, Request, Response } from 'express';
 
-import Joi from 'Joi';
+import * as Joi from 'Joi';
 
 @Injectable()
 export default class CarPostPutValidationMiddleware implements NestMiddleware {

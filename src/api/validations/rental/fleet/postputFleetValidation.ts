@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
-import Joi from 'Joi';
+import * as Joi from 'Joi';
 import transformToArray from '@validations/utils/transformJoiResult';
 import { moneyRegex } from '@validations/utils/regex';
 import { Injectable, NestMiddleware } from '@nestjs/common';
