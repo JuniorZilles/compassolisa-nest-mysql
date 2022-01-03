@@ -11,7 +11,7 @@ export default class Accessory {
   @Column({ nullable: false })
   descricao: string;
 
-  @ManyToOne(() => Car, (car) => car.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Car, (car) => car.id)
   carro: Car;
 
   @Exclude()

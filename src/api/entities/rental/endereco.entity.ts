@@ -13,7 +13,7 @@ export default class Endereco {
   @Column({ nullable: false })
   isFilial: boolean;
 
-  @ManyToOne(() => Rental, (rental) => rental.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Rental, (rental) => rental.id)
   rental: Rental;
 
   @Column({ nullable: false })

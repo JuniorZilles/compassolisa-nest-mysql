@@ -27,10 +27,10 @@ export default class Fleet {
   @Column({ nullable: false })
   valor_diaria: number;
 
-  @ManyToOne(() => Car, (car) => car.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Car, (car) => car.id)
   carro: Car;
 
-  @ManyToOne(() => Rental, (rental) => rental.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Rental, (rental) => rental.id)
   rental: Rental;
 
   @OneToMany(() => Reserve, (reserve) => reserve.fleet, { onDelete: 'CASCADE' })

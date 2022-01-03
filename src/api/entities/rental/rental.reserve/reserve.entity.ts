@@ -16,13 +16,13 @@ export default class Reserve {
   @Column({ type: 'date', nullable: false })
   data_fim: Date;
 
-  @ManyToOne(() => Fleet, (fleet) => fleet.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Fleet, (fleet) => fleet.id)
   fleet: Fleet;
 
-  @ManyToOne(() => Person, (person) => person.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Person, (person) => person.id)
   person: Person;
 
-  @ManyToOne(() => Rental, (rental) => rental.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Rental, (rental) => rental.id)
   rental: Rental;
 
   @Column({ nullable: false })

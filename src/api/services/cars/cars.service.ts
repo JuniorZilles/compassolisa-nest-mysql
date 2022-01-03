@@ -13,12 +13,13 @@ export default class CarsService {
     return car;
   }
 
-  findAll(payload: SearchCarDto) {
-    return `This action returns all cars`;
+  async findAll(payload: SearchCarDto) {
+    const results = this.carRepo.findAll(payload);
+    return results;
   }
 
   async findById(id: string): Promise<CarDto> {
-    const car = await this.carRepo.findOne(id);
+    const car = await this.carRepo.findOneById(id);
     if (!car || Object.keys(car).length === 0) {
       throw new NotFoundException('Car not found');
     }

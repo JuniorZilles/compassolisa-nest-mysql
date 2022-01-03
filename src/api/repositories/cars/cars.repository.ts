@@ -1,4 +1,5 @@
 import CarDto from '@dto/cars/car.dto';
+import SearchCarDto from '@dto/cars/search-car.dto';
 import Car from '@entities/cars/car.entity';
 import { EntityRepository, Repository } from 'typeorm';
 
@@ -13,5 +14,15 @@ export default class CarsRepository extends Repository<Car> {
   async updateCar(id: string, updateCarDto: CarDto): Promise<CarDto> {
     const car = await this.save({ id, updateCarDto });
     return car;
+  }
+
+  async findOneById(id: string): Promise<CarDto> {
+    const result = await this.findOne(id, { relations: ['acessorios'] });
+    return result;
+  }
+
+  async findAll(payload: SearchCarDto): Promise<CarDto[]> {
+    const result = await this.find(payload);
+    return result;
   }
 }
