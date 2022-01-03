@@ -49,7 +49,7 @@ export default class CarsController {
   @ApiOkResponse({ description: 'Operation succeeded.', type: CarDto })
   @ApiNotFoundResponse({ description: 'The car was not found.', type: ErrorDto, isArray: true })
   findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.carsService.findOne(id);
+    return this.carsService.findById(id);
   }
 
   @Put(':id')
