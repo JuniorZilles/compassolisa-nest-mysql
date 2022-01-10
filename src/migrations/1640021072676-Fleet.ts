@@ -44,12 +44,12 @@ export default class Fleet1640021072676 implements MigrationInterface {
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           },
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           }
         ]
       })

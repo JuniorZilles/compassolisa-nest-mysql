@@ -47,12 +47,12 @@ export default class Reserve1640021081526 implements MigrationInterface {
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           },
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           }
         ]
       })

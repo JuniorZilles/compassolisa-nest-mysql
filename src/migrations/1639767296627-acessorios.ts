@@ -27,12 +27,12 @@ export default class Acessorios1639767296627 implements MigrationInterface {
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           },
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           }
         ]
       })

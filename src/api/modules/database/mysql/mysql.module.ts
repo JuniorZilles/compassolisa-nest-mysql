@@ -24,7 +24,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
       entities: [Car, Fleet, Rental, Reserve, Person, Accessory, Endereco],
-      synchronize: true,
+      synchronize: false,
       logging: false
     })
   ]

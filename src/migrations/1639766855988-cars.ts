@@ -37,12 +37,12 @@ export default class Cars1639766855988 implements MigrationInterface {
           {
             name: 'created_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           },
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'CURRENT_TIMESTAMP(6)'
+            default: 'CURRENT_TIMESTAMP'
           }
         ]
       })
