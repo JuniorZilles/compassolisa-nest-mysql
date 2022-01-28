@@ -1,6 +1,14 @@
 import Fleet from '@entities/rental/rental.fleet/fleet.entity';
 import { Exclude } from 'class-transformer';
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn
+} from 'typeorm';
 // eslint-disable-next-line import/no-cycle
 import Accessory from './cars.accessory/accessory.entity';
 
@@ -18,9 +26,11 @@ export default class Car {
   @Column({ nullable: false })
   ano: number;
 
+  @JoinTable()
   @OneToMany(() => Accessory, (accessory) => accessory.carro, { onDelete: 'CASCADE', cascade: true })
   acessorios: Accessory[];
 
+  @JoinTable()
   @OneToMany(() => Fleet, (fleet) => fleet.carro, { onDelete: 'CASCADE' })
   cars: Fleet[];
 

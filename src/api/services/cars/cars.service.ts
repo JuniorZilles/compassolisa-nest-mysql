@@ -19,7 +19,7 @@ export default class CarsService {
   }
 
   async findById(id: string): Promise<CarDto> {
-    const car = await this.carRepo.findOneById(id);
+    const car = await this.carRepo.findOneCarById(id);
     if (!car || Object.keys(car).length === 0) {
       throw new NotFoundException('Car not found');
     }

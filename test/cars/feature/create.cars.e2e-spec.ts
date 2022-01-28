@@ -1,29 +1,28 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import CarsRepository from '@repositories/cars/cars.repository';
-import CarsModule from '@modules/cars/cars.module';
-import AccessoryRepository from '@repositories/cars/cars.accessory/accessory.repository';
+import AppModule from '@modules/app/app.module';
+import cleanDatabase from '../../utils/cleanDatabase';
 import { oneCar } from '../../utils/factory/car.factory';
-import { MOCKCARREPOSITORY } from '../../utils/mocks/cars.repository.mock';
-import { MOCKACCESSORYREPOSITORY } from '../../utils/mocks/accessory.repository.mock';
 
 describe('CarsController (e2e)', () => {
   let app: INestApplication;
 
   const carFactory = oneCar();
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [CarsModule]
-    })
-      .overrideProvider(CarsRepository)
-      .useValue(MOCKCARREPOSITORY)
-      .overrideProvider(AccessoryRepository)
-      .useValue(MOCKACCESSORYREPOSITORY)
-      .compile();
+      imports: [AppModule]
+    }).compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
+  });
+
+  afterAll(async () => {
+    await app.close();
+  });
+  afterEach(async () => {
+    await cleanDatabase();
   });
 
   it('/ (POST)', async () => {
@@ -32,6 +31,14 @@ describe('CarsController (e2e)', () => {
     expect(response.status).toBe(201);
     expect(response.body).toEqual({
       ...carFactory,
+      acessorios: expect.arrayContaining([
+        {
+          id: expect.any(String),
+          descricao: expect.any(String),
+          created_at: expect.any(String),
+          updated_at: expect.any(String)
+        }
+      ]),
       id: expect.any(String),
       created_at: expect.any(String),
       updated_at: expect.any(String)

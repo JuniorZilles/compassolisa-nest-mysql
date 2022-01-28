@@ -11,7 +11,7 @@ export default class SearchCarDto {
     required: false,
     description: 'The car color'
   })
-  cor: string;
+  cor?: string;
 
   @ApiProperty({
     required: false,
@@ -19,10 +19,10 @@ export default class SearchCarDto {
     minimum: 1950,
     maximum: 2022
   })
-  ano: number;
+  ano?: number;
 
   @ApiProperty({ description: 'Amount of car seats', minimum: 1, required: false })
-  quantidadePassageiros: number;
+  quantidadePassageiros?: number;
 
   @ApiProperty({
     required: false,

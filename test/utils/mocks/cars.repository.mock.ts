@@ -7,10 +7,16 @@ export const MOCKCARREPOSITORY = {
   insertCar: jest.fn((dto) => ({
     id: v4(),
     ...dto,
+    acessorios: dto.acessorios.map((acessorio: { descricao: string }) => ({
+      id: v4(),
+      descricao: acessorio.descricao,
+      created_at: new Date(),
+      updated_at: new Date()
+    })),
     created_at: new Date(),
     updated_at: new Date()
   })),
-  findById: jest.fn((id) => ({
+  findOneCarById: jest.fn((id) => ({
     ...GENERATED.find((car) => car.id === id)
   })),
   update: jest.fn((id, dto) => {

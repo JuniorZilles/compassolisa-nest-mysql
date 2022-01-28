@@ -16,7 +16,7 @@ export default class CarsRepository extends Repository<Car> {
     return car;
   }
 
-  async findOneById(id: string): Promise<CarDto> {
+  async findOneCarById(id: string): Promise<CarDto> {
     const result = await this.findOne(id, { relations: ['acessorios'] });
     return result;
   }

@@ -8,7 +8,8 @@ import {
   Put,
   ParseUUIDPipe,
   UseInterceptors,
-  ClassSerializerInterceptor
+  ClassSerializerInterceptor,
+  Query
 } from '@nestjs/common';
 import CarsService from '@services/cars/cars.service';
 import CarDto from '@dto/cars/car.dto';
@@ -41,7 +42,7 @@ export default class CarsController {
 
   @Get()
   @ApiOkResponse({ description: 'Operation succeeded.', type: ListCarDto })
-  findAll(@Param() payload: SearchCarDto) {
+  findAll(@Query() payload: SearchCarDto) {
     return this.carsService.findAll(payload);
   }
 

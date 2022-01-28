@@ -27,7 +27,7 @@ describe('scr :: api :: service :: cars :: findById()', () => {
           ...GENERATED[4]
         });
 
-        expect(MOCKCARREPOSITORY.findById).toHaveBeenCalledWith(id);
+        expect(MOCKCARREPOSITORY.findOneCarById).toHaveBeenCalledWith(id);
       });
     });
 
@@ -40,7 +40,7 @@ describe('scr :: api :: service :: cars :: findById()', () => {
           expect((<NotFoundException>e).name).toBe('NotFoundException');
           expect((<NotFoundException>e).message).toBe('Car not found');
         }
-        expect(MOCKCARREPOSITORY.findById).toHaveBeenCalledWith(UUID);
+        expect(MOCKCARREPOSITORY.findOneCarById).toHaveBeenCalledWith(UUID);
       });
     });
   });

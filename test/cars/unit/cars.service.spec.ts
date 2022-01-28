@@ -24,7 +24,7 @@ describe('scr :: api :: service :: cars :: CarsService()', () => {
       });
 
       it('THEN the CarsService should have a findOne method', () => {
-        expect(service).toHaveProperty('findOne');
+        expect(service).toHaveProperty('findById');
       });
 
       it('THEN the CarsService should have a create method', () => {
